@@ -1,24 +1,28 @@
-const mongoose = require('mongoose');
-const app = require('./app');
-
-require("dotenv").config;
-const PORT = process.env.PORT; 
+const dns = require("dns");
+dns.setServers(["8.8.8.8", "8.8.4.4"]);
+const app = require("./app");
+require("dotenv").config();
 
 const connectDB = require("./config/db");
-connectDB();
+
+const PORT = process.env.PORT || 5000;
 
 const start = async () => 
-{    
-    try {
+{     
+  try 
+    {
         await connectDB();
-    }
+
+        app.listen(PORT, () =>
+            {
+                console.log(`Server started on port ${PORT}`);
+            }
+        );
+    } 
     catch (err) 
     {
-        console.log("Database not connected", err.message);
+        console.error(err.message);
     }
-    const server = app.listen(PORT, () => {
-        console.log(`Server starts on port ${PORT}`); 
-    })
-} 
+};
 
 start();
