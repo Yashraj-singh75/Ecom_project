@@ -1,6 +1,6 @@
-import mongoose from "mongoose";
-import slugify from "slugify";
-import { nanoid } from "nanoid";
+const mongoose = require("mongoose");
+const slugify = require("slugify");
+const { nanoid } = require("nanoid");
 
 const productSchema = new mongoose.Schema(
     {
@@ -142,4 +142,4 @@ productSchema.pre("validate", function () {
 
 const Product = mongoose.model("Product", productSchema);
 
-export default Product;
+module.exports = Product;

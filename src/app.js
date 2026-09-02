@@ -13,6 +13,9 @@ const notFound = require("./middlewares/notfound.middleware");
 const errorHandler = require("./middlewares/errorHandler.middleware");
 const categoryRouter = require("./modules/category/categoryRoute");
 const BrandRouter = require("./modules/brand/brandRoute");
+const productRouter = require("./modules/product/productRoute");
+const swaggerUi = require("swagger-ui-express");
+const swaggerFile = require("./swagger-output.json");
 
 app.use(express.json());
 app.use(helmet());
@@ -29,10 +32,19 @@ app.use(
     )
 );
 
+app.use(
+    "/api-docs",
+    swaggerUi.serve,
+    swaggerUi.setup(swaggerFile, {
+        swaggerOptions: { withCredentials: true },
+    })
+);
+
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/user", userRoute);
 app.use("/api/v1/brand",BrandRouter);
 app.use("/api/v1/category",categoryRouter);
+app.use("/api/v1/product",productRouter);
 
 
 app.get("/api/v1/health", (req, res) => 
