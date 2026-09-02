@@ -2,11 +2,11 @@ const express = require("express");
 
 const categoryRouter = express.Router();
 
-const categoryController = require("./category.controller");
+const categoryController = require("./categoryController");
 
 const { upload } = require("../../middlewares/upload.middleware");
 
-const loadResource = require("../../middlewares/losdResource.middleware");
+const loadResource = require("../../middlewares/loadResource.middleware");
 
 const Category = require("../../models/category.model");
 
@@ -14,7 +14,7 @@ const
 {
   createCategoryValidator,
   updateCategoryValidator,
-} = require("./category.validator");
+} = require("./categoryValidator");
 
 const validate = require("../../middlewares/validate.middleware");
 

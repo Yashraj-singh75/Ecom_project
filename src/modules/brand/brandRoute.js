@@ -2,11 +2,11 @@ const express = require("express");
 
 const BrandRouter = express.Router();
 
-const BrandController = require("./brand.controller");
+const BrandController = require("./brandController");
 
 const { upload } = require("../../middlewares/upload.middleware");
 
-const loadResource = require("../../middlewares/loadReesouce.middleware");
+const loadResource = require("../../middlewares/loadResource.middleware");
 
 const BrandModel = require("../../models/brand.model");
 
