@@ -1,5 +1,5 @@
 const asyncHandler = require("../../utils/asyncHandler");
-const userService = require("./user.service");
+const userService = require("./userService");
 const apiResponse = require("../../utils/apiResponse");
 
 const getOwnProfileController = asyncHandler(async (req, res) => 
